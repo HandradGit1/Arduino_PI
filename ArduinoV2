@@ -1,0 +1,73 @@
+char receptor1 = 'A';
+int receptor2 = 0;
+void setup()
+{
+  pinMode(3,INPUT);
+  Serial.begin(9600);
+  
+}
+
+void loop(){
+ switch(receptor1){
+  case 1: //----Adentra a procura pela Letra----//
+   if(Serial.read()=='A'){
+    Serial.print("Letra A Recebida");
+    for(int T = 1;T <=100;T++){//---Confirmação do case 1(Letra)---//
+      digitalWrite(3,HIGH);
+      delay(500);
+      digitalWrite(3,LOW);}
+    break;//--Rompe o case 1(Sucesso)--//
+ }
+   case 2: //----Tentativa 2----//
+   	Serial.print("Aguardando orden, case 2 ativo(Letra)");
+    delay(5000);
+   if(Serial.read()=='A'){
+    Serial.print("Letra A recebida");
+     for(int T = 1;T <=100;T++){//---Confirmação do case 2(Letra)---//
+      digitalWrite(3,HIGH);
+      delay(500);
+      digitalWrite(3,LOW);}
+     break;//--Rompe o caso 2(Sucesso)--//
+   } 
+   else{//---Entrar aqui significa falha na leitura//
+     Serial.print("Letra ignorada, passando para número");
+     delay(2000);
+     break;
+  }
+ }
+ switch(receptor2){
+   case 1:
+  if(Serial.read() > 0){
+    Serial.print("Numero Recebido");
+    for(int T = 1;T <=100;T++){//---Confirmação do case 1(Número)---//
+      digitalWrite(3,HIGH);
+      delay(500);
+      digitalWrite(3,LOW);
+      delay(1000);
+      digitalWrite(3,HIGH);
+      delay(1000);
+      digitalWrite(3,LOW);}
+    break;//--Rompe o case 1(Sucesso)--//
+  }
+    case 2: //----Tentativa 2----//
+   	Serial.print("Aguardando inteiro, case 2 ativo(Numero)");
+    delay(5000);
+   if(Serial.read()> 0){
+    Serial.print("Numero recebido");
+     for(int T = 1;T <=100;T++){//---Confirmação do case 2(Número)---//
+      digitalWrite(3,HIGH);
+      delay(500);
+      digitalWrite(3,LOW);
+      delay(1000);
+      digitalWrite(3,HIGH);
+      delay(1000);
+      digitalWrite(3,LOW);}
+     break;//Rompe o caso 2(Sucesso)//
+ }
+    else {//---Entrar aqui significa falha na leitura//
+     Serial.print("Letra ignorada, passando para número");
+     delay(2000);
+     break;
+  }
+ }
+}
