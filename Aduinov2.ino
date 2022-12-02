@@ -1,7 +1,7 @@
 const char ABRIR_PORTA = 'A';
 const char FECHAR_PORTA = 'B';
 const int PORTA_LED = 13;
-char cobaia =' ';
+char teste =' ';
 
 void setup()
 {
@@ -14,7 +14,7 @@ void loop(){
   if(Serial.available()>0){
     cobaia = Serial.read();
  
- switch(cobaia){
+ switch(teste){
   case ABRIR_PORTA:
       digitalWrite(13,HIGH);
       Serial.print("ABERTO");
