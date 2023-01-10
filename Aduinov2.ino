@@ -12,7 +12,7 @@ void setup()
 void loop(){
   
   if(Serial.available()>0){
-    cobaia = Serial.read();
+    teste = Serial.read();
  
  switch(teste){
   case ABRIR_PORTA:
